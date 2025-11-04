@@ -7,10 +7,18 @@
 
 /* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  /* Prefer Helvetica. If not available, fall back to Arial and generic sans-serif */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
+}
+
+/* brand color variables */
+:root {
+  --brand-red: #ff003b; /* primary accent */
+  --brand-gold: #e3a535; /* secondary accent */
+  --brand-dark: #000000;
 }
 
 .page-wrapper {
@@ -21,13 +29,41 @@ body {
 /* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .site-title {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
+}
+
+/* color the site title with the red accent */
+.site-title {
+  color: var(--brand-red);
+}
+
+/* branding logo */
+.brand-logo {
+  display: block;
+  margin: 0 auto 8px;
+  max-width: 220px;
+  height: auto;
+}
+
+/* latest question preview */
+.latest-question {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-style: italic;
+  color: #111;
+  border-radius: 6px;
+}
+.latest-question strong {
+  font-weight: 600;
+  margin-right: 6px;
 }
 
 /* chat window */
@@ -44,20 +80,41 @@ body {
   overflow-y: auto;
   background: #fafafa;
   white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* messages */
 .msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.msg .bubble {
+  padding: 12px 14px;
+  border-radius: 14px;
 }
 
 .msg.user {
-  color: #000;
+  align-self: flex-end;
 }
 
-.msg.ai {
-  color: #666666;
+.msg.user .bubble {
+  background: #000;
+  color: #fff;
+  border-radius: 14px 14px 6px 14px;
+}
+
+.msg.assistant {
+  align-self: flex-start;
+}
+
+.msg.assistant .bubble {
+  background: #fff;
+  color: #111;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px 14px 14px 6px;
 }
 
 /* input row */
@@ -81,7 +138,7 @@ body {
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: var(--brand-red);
   color: #fff;
   border: none;
   padding: 12px;
@@ -99,7 +156,7 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #cc0031; /* slightly darker red on hover */
 }
 
 .chat-form button:focus {
@@ -140,4 +197,24 @@ body {
 
 .site-footer a:hover {
   color: #666666;
+}
+
+/* Accent touches: latest question border and assistant bubble accent */
+.latest-question {
+  border-left: 4px solid var(--brand-gold);
+}
+
+.msg.assistant .bubble {
+  background: #fff;
+  color: #111;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px 14px 14px 6px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02),
+    0 6px 10px -8px rgba(227, 165, 53, 0.18);
+}
+
+/* subtle gold ring on focused input */
+.chat-form input:focus {
+  outline: 2px solid rgba(227, 165, 53, 0.2);
+  outline-offset: 2px;
 }

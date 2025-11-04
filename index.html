@@ -19,12 +19,19 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <img src="img/loreal-logo.png" alt="L'Oréal" class="brand-logo" />
         <h1 class="site-title">Smart Product Advisor</h1>
       </header>
 
       <!------- Chat Area ------->
       <main>
         <section class="chatbox">
+          <!-- Latest question preview (updates with each new submission) -->
+          <div
+            id="latestQuestion"
+            class="latest-question"
+            aria-live="polite"
+          ></div>
           <div id="chatWindow" class="chat-window">
             <!-- messages will be appended here via JS -->
           </div>
